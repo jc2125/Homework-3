@@ -2,7 +2,7 @@
 
 Number 1:
 
-I will include the function algorithms in one file, then a main file in uploaded as a seperate file so that the main file can be ran and tested. The first file will be in order for you guys to analyze the algorithms of the functions required.
+I will include the function algorithms in one file (Number 1 Grade File), then a main file in uploaded as a seperate file so that the main file can be ran and tested (Number 1 Test File). The first file will be in order for you guys to analyze the algorithms of the functions required.
 
 Note: Lets say you choose the program to have three children per parent, the format of my heapArray would look like:
     [root, parent 1, child 1 of parent 1, child 2 of parent 1, child 3 of parent 1, parent 2, child 1 of parent 2 ....]
