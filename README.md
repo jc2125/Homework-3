@@ -2,6 +2,8 @@
 
 Number 1:
 
+*FOR NUMBER ONE BE SURE TO LOOK AT ATTACHED IMAGE WHEN LOOKING AT THE README FILE IN ORDER TO SEE VISUALLY MY EXAMPLE TREE*
+
 I will include the function algorithms in one file (Number 1 Grade File), then a main file in uploaded as a seperate file so that the main file can be ran and tested (Number 1 Test File). The first file will be in order for you guys to analyze the algorithms of the functions required.
 
 Note: Lets say you choose the program to have three children per parent, the format of my heapArray would look like:
@@ -14,5 +16,4 @@ Note: Lets say you choose the program to have three children per parent, the for
        (5) 7 = child 2 of parent 1            (8) 323 = child 2 of parnet 2
        (6) 838 = child 3 of parent 1          (9) 9 = child 3 of parnet 2
         
-        heapArray = [77,14,50,7,838,10,7001,323,9,8] <- i formatted the heapArray this way in order to visualize the tree easier for me with arrays through my program
-        
+        heapArray = [77,14,50,7,838,10,7001,323,9,8] <- i formatted the heapArray this way in order to visualize the tree easier for me with arrays through my prograM
