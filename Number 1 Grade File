@@ -197,10 +197,7 @@ if (arr[arrayLength-2] < arr[arrayLength-1])
 }
 
 /*The delete max function finds the highest valued node (which will always be the 
-root in a maxHeap) and swaps it with the most recent child. It then deletes what
-was just the root and then reorganizes the tree such that the maximum valued node
-in the tree will become the root once more. This delete function does the deletion 
-and also the job of the sink function*/
+root in a maxHeap) and swaps it with the most recent child.*/
 
 void delMax(int arr[],int arrayLength,int d){
 arrayLength++;
@@ -208,6 +205,27 @@ cout << "\n\nThe Largest Value in The Heap(which is going to be deleted) =\n" <<
 swap(arr[0],arr[arrayLength-2]);
 swap(arr[arrayLength-2],arr[arrayLength-1]);
 arrayLength--;
+}
+
+/*The sink function looks at the tree after the deletion, then reorganizes the 
+tree back into a maxHeap binary tree*/
+
+void sink(int arr[],int arrayLength,int d){
+int Max = 0;
+    for (int w = 0; w < arrayLength; w++)
+    {
+        if (arr[Max] < arr[w])
+        {
+            Max = w;
+        }
+    }
+    swap (arr[Max], arr[0]);
+DaryHeap(arr,arrayLength,d);
+cout << "\n\nNew Heap Array After Swim:\n";
+for (int i = 0; i < arrayLength;i++)
+{
+    cout << arr[i] << " ";
+}
 }
 
 /*This function takes the final tree array, and sorts the array by:
