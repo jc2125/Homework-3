@@ -42,7 +42,6 @@ void treeArray(int arr[],int sizeOfArray, int d){
     for (int w = 0; w < sizeOfArray; w++)
     {
         arr[w] = heapArray[w];
-        cout << arr[w] << " ";
     }
     int Max = 0;
     for (int i = 0; i < sizeOfArray; i++)
@@ -57,8 +56,8 @@ void treeArray(int arr[],int sizeOfArray, int d){
 
 /*function DaryHeap actually organizes this new array into an array where 
 all of the parents are of greater value than all its children. It basically 
-makes the tree array into a maxheap tree (before any deleting and sorting is
-actually done though)*/
+makes the tree array into a maxHeap tree (before any deleting and final 
+sorting is actually done though)*/
 
 void DaryHeap(int arr[],int sizeOfArray,int d){
     int i = 1;
@@ -197,13 +196,13 @@ if (arr[arrayLength-2] < arr[arrayLength-1])
 }
 
 /*The delete max function finds the highest valued node (which will always be the 
-root in a maxHeap) and swaps it with the most recent child.*/
+root in a maxHeap) swaps it with the most recent child, deletes the maximum valued
+node, and reduces the size of the tree altogether after the deletion*/
 
 void delMax(int arr[],int arrayLength,int d){
 arrayLength++;
 cout << "\n\nThe Largest Value in The Heap(which is going to be deleted) =\n" << arr[0] << endl;
-swap(arr[0],arr[arrayLength-2]);
-swap(arr[arrayLength-2],arr[arrayLength-1]);
+swap(arr[0],arr[arrayLength-1]);
 arrayLength--;
 }
 
@@ -221,11 +220,6 @@ int Max = 0;
     }
     swap (arr[Max], arr[0]);
 DaryHeap(arr,arrayLength,d);
-cout << "\n\nNew Heap Array After Swim:\n";
-for (int i = 0; i < arrayLength;i++)
-{
-    cout << arr[i] << " ";
-}
 }
 
 /*This function takes the final tree array, and sorts the array by:
@@ -254,5 +248,17 @@ int Max = 0;
     swap (arr[Max], arr[0]);
 t--;
 }
-cout << endl;
+}
+
+/*This double array doubles the internal array inside the heapsort if it's size goes over
+the initial size of the array initially given. This is done by doubling the size of the 
+array and copying the values of the original array into the doubled array*/
+
+void doubleArray(int arr[],int arrayLength,int d){
+int tempArray[2*arrayLength];
+for (int i =0; i < arrayLength;i++)
+    {
+        tempArray[i] = arr[i];
+    }
+arrayLength = arrayLength * 2;
 }
