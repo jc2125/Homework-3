@@ -1,10 +1,20 @@
 //d is the number of children per parent all throughout the program
 
-/*function treeArray organizes the given array into an array that 
+/*contructor DaeyHeap organizes the given array into an array that 
 resembles the structure of a binary tree and makes the root of this
-array be equal to the highest valued node in the tree*/ 
+array be equal to the highest valued node in the tree then the function 
+actually organizes this new array into an array where all of the parents 
+are of greater value than all its children. It basically makes the tree 
+array into a maxHeap tree (before any deleting and final sorting is 
+actually done though)*/ 
 
-void treeArray(int arr[],int sizeOfArray, int d){
+class DaryHeap
+{
+public:
+    int sizeOfArray;
+    int arr[];
+DaryHeap (int d,int arr[],int sizeOfArray){
+    cout << "\n\nGoing to Sort Tree With " << d << " children per parent\n";
     int index = 2;
     int z = 2;
     int k = 2;
@@ -39,27 +49,26 @@ void treeArray(int arr[],int sizeOfArray, int d){
         heapArray[8] = arr[4];
         heapArray[9] = arr[5];
     }
+    cout << "\nHeapArray =\n";
     for (int w = 0; w < sizeOfArray; w++)
     {
         arr[w] = heapArray[w];
+        cout << arr[w] << " ";
     }
     int Max = 0;
-    for (int i = 0; i < sizeOfArray; i++)
+    for (int o = 0; o < sizeOfArray; o++)
     {
-        if (arr[Max] < arr[i])
+        if (arr[Max] < arr[o])
         {
-            Max = i;
+            Max = o;
         }
     }
     swap (arr[Max], arr[0]);
-}
-
-/*function DaryHeap actually organizes this new array into an array where 
-all of the parents are of greater value than all its children. It basically 
-makes the tree array into a maxHeap tree (before any deleting and final 
-sorting is actually done though)*/
-
-void DaryHeap(int arr[],int sizeOfArray,int d){
+    cout << "\nHeapArray w/ Max valued index at root =\n";
+    for (int g = 0; g < sizeOfArray; g++)
+    {
+        cout << arr[g] << " ";
+    }
     int i = 1;
     if (d == 3)
     {
@@ -166,7 +175,7 @@ void DaryHeap(int arr[],int sizeOfArray,int d){
             }
             i = i + (d+1);
         }
-    }
+}
 }
 
 /*Insert function inserts a value into the array, where this value becomes 
@@ -219,7 +228,6 @@ int Max = 0;
         }
     }
     swap (arr[Max], arr[0]);
-DaryHeap(arr,arrayLength,d);
 }
 
 /*This function takes the final tree array, and sorts the array by:
