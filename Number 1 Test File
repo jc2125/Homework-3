@@ -1,44 +1,14 @@
 #include <iostream>
 
 using namespace std;
-void treeArray(int [],int,int);
-void DaryHeap(int[],int,int);
-void Insert(int,int,int[],int);
-void swim(int[],int,int);
-void sink(int[],int,int);
-void delMax(int[],int,int);
-void daryHeapSort(int[],int,int);
-void doubleArray(int[],int,int);
-int main()
+
+class DaryHeap
 {
-    int length = 10;
-    int initialArray[length] = {18,1,110,98,5000,7,88,700,33,59};
-    cout << "Original Array = ";
-    for (int i = 0; i < length; i++)
-    {
-        cout << initialArray[i] << " ";
-    }
-    int d; // d is input
-    cout << "\nHow Many Children Will Each Node Have?: ";
-    cin >> d;
-    treeArray(initialArray,length,d);
+public:
+    int sizeOfArray;
+    int arr[];
+DaryHeap (int d,int arr[],int sizeOfArray){
     cout << "\n\nGoing to Sort Tree With " << d << " children per parent\n";
-    DaryHeap (initialArray,length,d);
-    cout << "\n\nDaryHeap Array =\n";
-          for (int q = 0; q < length; q++)
-            {
-                cout << initialArray[q] << " ";
-            }
-    int k;
-    cout << "\n\nWhat Number Would You Like To Insert Into The Tree? ";
-    cin >> k;
-    Insert(k,length,initialArray,d);
-    swim (initialArray,length,d);
-    delMax(initialArray,length,d);
-    sink(initialArray,length,d);
-    daryHeapSort(initialArray,length,d);
-}
-void treeArray(int arr[],int sizeOfArray, int d){
     int index = 2;
     int z = 2;
     int k = 2;
@@ -73,18 +43,18 @@ void treeArray(int arr[],int sizeOfArray, int d){
         heapArray[8] = arr[4];
         heapArray[9] = arr[5];
     }
-    cout << "\nheapArray =\n";
+    cout << "\nHeapArray =\n";
     for (int w = 0; w < sizeOfArray; w++)
     {
         arr[w] = heapArray[w];
         cout << arr[w] << " ";
     }
     int Max = 0;
-    for (int i = 0; i < sizeOfArray; i++)
+    for (int o = 0; o < sizeOfArray; o++)
     {
-        if (arr[Max] < arr[i])
+        if (arr[Max] < arr[o])
         {
-            Max = i;
+            Max = o;
         }
     }
     swap (arr[Max], arr[0]);
@@ -93,8 +63,6 @@ void treeArray(int arr[],int sizeOfArray, int d){
     {
         cout << arr[g] << " ";
     }
-}
-void DaryHeap(int arr[],int sizeOfArray,int d){
     int i = 1;
     if (d == 3)
     {
@@ -201,51 +169,51 @@ void DaryHeap(int arr[],int sizeOfArray,int d){
             }
             i = i + (d+1);
         }
-    }
 }
-void Insert(int k,int arrayLength, int arr[],int d){
-arrayLength++;
-arr[arrayLength-1] = k;
+}
+void Insert(int k,int d,int arr[],int sizeOfArray){
+sizeOfArray++;
+arr[sizeOfArray-1] = k;
 
 cout << "\n\nArray After Insertion = ";
-for (int i = 0; i < arrayLength;i++)
+for (int i = 0; i < sizeOfArray;i++)
 {
     cout << arr[i] << " ";
 }
 }
-void swim(int arr[],int arrayLength,int d){
-arrayLength++;
-if (arr[arrayLength-2] < arr[arrayLength-1])
+void swim(int d,int arr[],int sizeOfArray){
+sizeOfArray++;
+if (arr[sizeOfArray-2] < arr[sizeOfArray-1])
 {
-    swap(arr[arrayLength-2],arr[arrayLength-1]);
-    if (arr[0] < arr[arrayLength-2])
+    swap(arr[sizeOfArray-2],arr[sizeOfArray-1]);
+    if (arr[0] < arr[sizeOfArray-2])
     {
-        swap(arr[0],arr[arrayLength-2]);
+        swap(arr[0],arr[sizeOfArray-2]);
     }
 }
 cout << "\n\nHeap Array After Swim:\n";
-for (int i = 0; i < arrayLength;i++)
+for (int i = 0; i < sizeOfArray;i++)
 {
     cout << arr[i] << " ";
 }
 }
 
-void delMax(int arr[],int arrayLength,int d){
-arrayLength++;
+void delMax(int d,int arr[],int sizeOfArray){
+sizeOfArray++;
 cout << "\n\nThe Largest Value in The Heap(which is going to be deleted) =\n" << arr[0] << endl;
-swap(arr[0],arr[arrayLength-1]);
-arrayLength--;
+swap(arr[0],arr[sizeOfArray-1]);
+sizeOfArray--;
 
 cout << "\n\nArray After Deletion: ";
-for (int i = 0; i < arrayLength;i++)
+for (int i = 0; i < sizeOfArray;i++)
 {
     cout << arr[i] << " ";
 }
 }
 
-void sink(int arr[],int arrayLength,int d){
+void sink(int d,int arr[],int sizeOfArray){
 int Max = 0;
-    for (int w = 0; w < arrayLength; w++)
+    for (int w = 0; w < sizeOfArray; w++)
     {
         if (arr[Max] < arr[w])
         {
@@ -253,16 +221,16 @@ int Max = 0;
         }
     }
     swap (arr[Max], arr[0]);
-DaryHeap(arr,arrayLength,d);
-cout << "\n\nNew Heap Array After Swim:\n";
-for (int i = 0; i < arrayLength;i++)
+cout << "\n\nNew Heap Array After Sink:\n";
+for (int i = 0; i < sizeOfArray;i++)
 {
     cout << arr[i] << " ";
 }
 }
-void daryHeapSort(int arr[],int arrayLength,int d){
-int copyArray[arrayLength] = {0};
-signed int t = arrayLength - 1;
+
+void daryHeapSort(int d,int arr[],int sizeOfArray){
+int copyArray[sizeOfArray] = {0};
+signed int t = sizeOfArray - 1;
 while (t != -1)
 {
 swap(arr[0],arr[t]);
@@ -279,17 +247,48 @@ int Max = 0;
 t--;
 }
 cout << "\n\nSorted Array = ";
-for (int j = 0; j < arrayLength;j++)
+for (int j = 0; j < sizeOfArray;j++)
 {
     cout << copyArray[j] << " ";
 }
 cout << endl;
 }
-void doubleArray(int arr[],int arrayLength,int d){
-int tempArray[2*arrayLength];
-for (int i =0; i < arrayLength;i++)
+void doubleArray(){
+int tempArray[2*sizeOfArray];
+for (int i =0; i < sizeOfArray;i++)
     {
         tempArray[i] = arr[i];
     }
-arrayLength = arrayLength * 2;
+sizeOfArray = sizeOfArray * 2;
+}
+};
+
+
+
+int main()
+{
+    int length = 10;
+    int initialArray[length] = {18,1,110,98,5000,7,88,700,33,59};
+    cout << "Original Array = ";
+    for (int i = 0; i < length; i++)
+    {
+        cout << initialArray[i] << " ";
+    }
+    int d; // d is input
+    cout << "\nHow Many Children Will Each Node Have?: ";
+    cin >> d;
+    DaryHeap obj(d,initialArray,length);
+    cout << "\n\nDaryHeap Array =\n";
+        for (int q = 0; q < length; q++)
+            {
+                cout << initialArray[q] << " ";
+            }
+    int k;
+    cout << "\n\nWhat Number Would You Like To Insert Into The Tree? ";
+    cin >> k;
+    obj.Insert(k,d,initialArray,length);
+    obj.swim(d,initialArray,length);
+    obj.delMax(d,initialArray,length);
+    obj.sink(d,initialArray,length);
+    obj.daryHeapSort(d,initialArray,length);
 }
